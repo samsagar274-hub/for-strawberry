@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Interactive Heart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container"></div>
+    <div id="info">
+        <p>Move your mouse to interact with the heart</p>
+        <p>Scroll to zoom, drag to rotate view</p>
+    </div>
+    <div id="controls">
+        <button id="colorToggle">Change Color</button>
+        <button id="pulsateToggle">Toggle Pulse</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="heart.js"></script>
+</body>
+</html>
