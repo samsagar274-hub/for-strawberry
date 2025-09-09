@@ -998,12 +998,15 @@ function showLetter() {
         document.getElementById('lyrics').innerHTML = '';
         shownLyrics.clear();
     }
+
+    
     
     // Add a gentle entrance animation
     setTimeout(() => {
         letterModal.querySelector('.letter-content').style.transform = 'scale(1) translateY(0)';
     }, 100);
 }
+
 
 function hideLetter() {
     const letterModal = document.getElementById('letterModal');
