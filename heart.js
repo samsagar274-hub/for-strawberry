@@ -833,13 +833,13 @@ document.addEventListener('DOMContentLoaded', () => {
             controls.update();
         }
 
-        // Enhanced heart animation
-        heart.rotation.y += 0.004;
-        heart.rotation.x += 0.001;
+        // Enhanced and faster heart animation
+        heart.rotation.y += 0.006; // Increased from 0.004
+        heart.rotation.x += 0.0015; // Increased from 0.001
 
-        // Music-reactive pulsation with audio analysis
+        // Music-reactive pulsation with audio analysis - faster pulsing
         if (isPulsating) {
-            let pulseFactor = 1 + Math.sin(Date.now() * 0.003) * 0.08;
+            let pulseFactor = 1 + Math.sin(Date.now() * 0.005) * 0.12; // Increased speed and amplitude
             
             if (isPlaying && analyser) {
                 // Get audio frequency data for reactive effects
@@ -847,52 +847,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 const average = dataArray.reduce((a, b) => a + b) / dataArray.length;
                 const normalizedAverage = average / 255;
                 
-                // Add audio-reactive pulsation
-                pulseFactor += normalizedAverage * 0.15;
+                // Add audio-reactive pulsation with more responsiveness
+                pulseFactor += normalizedAverage * 0.2; // Increased from 0.15
             }
             
             heart.scale.set(0.85 * pulseFactor, 0.85 * pulseFactor, 0.85 * pulseFactor);
         }
 
-        // Animate the special "I Love You" text with enhanced visibility
+        // Animate the special "I Love You" text with enhanced and faster animation
         if (loveText) {
             const time = Date.now() * 0.001;
             const { originalPosition, originalScale, pulsePhase } = loveText.userData;
             
-            // More prominent floating animation
-            loveText.position.y = originalPosition.y + Math.sin(time * 0.6 + pulsePhase) * 0.15;
-            loveText.position.z = originalPosition.z + Math.sin(time * 0.4 + pulsePhase) * 0.1;
+            // More prominent and faster floating animation
+            loveText.position.y = originalPosition.y + Math.sin(time * 0.8 + pulsePhase) * 0.2; // Faster and bigger movement
+            loveText.position.z = originalPosition.z + Math.sin(time * 0.6 + pulsePhase) * 0.15;
             
-            // More noticeable pulsing scale for mobile visibility
-            const scaleFactor = 1 + Math.sin(time * 1.2 + pulsePhase) * 0.1;
+            // More noticeable and faster pulsing scale
+            const scaleFactor = 1 + Math.sin(time * 1.5 + pulsePhase) * 0.15; // Faster and bigger pulse
             loveText.scale.set(scaleFactor, scaleFactor, scaleFactor);
             
-            // Gentle rotation for dynamic effect
-            loveText.rotation.y = Math.sin(time * 0.3) * 0.1;
-            loveText.rotation.z = Math.sin(time * 0.2) * 0.05;
+            // More dynamic rotation for better effect
+            loveText.rotation.y = Math.sin(time * 0.4) * 0.15; // Increased rotation
+            loveText.rotation.z = Math.sin(time * 0.3) * 0.08;
             
-            // Enhanced color effects for better visibility
+            // Enhanced color effects with faster transitions
             const baseColor = new THREE.Color(0xff1155);
-            const glowIntensity = 0.5 + Math.sin(time * 2) * 0.3;
+            const glowIntensity = 0.5 + Math.sin(time * 3) * 0.4; // Faster color pulsing
             
-            loveText.material.color.copy(baseColor).multiplyScalar(1 + glowIntensity * 0.2);
-            loveText.material.emissive.copy(baseColor).multiplyScalar(0.3 + glowIntensity * 0.2);
+            loveText.material.color.copy(baseColor).multiplyScalar(1 + glowIntensity * 0.3);
+            loveText.material.emissive.copy(baseColor).multiplyScalar(0.3 + glowIntensity * 0.3);
             
-            // Music reactive enhancement
+            // Music reactive enhancement with more responsiveness
             if (isPlaying && analyser && dataArray) {
                 const bassData = dataArray.slice(0, dataArray.length / 4);
                 const bassIntensity = (bassData.reduce((a, b) => a + b) / bassData.length) / 255;
                 
                 // Make text more prominent with music
-                const musicScale = 1 + bassIntensity * 0.2;
+                const musicScale = 1 + bassIntensity * 0.3; // Increased responsiveness
                 loveText.scale.multiplyScalar(musicScale);
                 
                 // Increase brightness with bass
-                loveText.material.emissive.multiplyScalar(1 + bassIntensity * 0.5);
+                loveText.material.emissive.multiplyScalar(1 + bassIntensity * 0.7);
             }
         }
 
-        // Animate lights with audio reactivity
+        // Animate lights with faster audio reactivity
         const time = Date.now() * 0.001;
         if (scene.userData.lights) {
             const lights = scene.userData.lights;
@@ -904,75 +904,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 bassIntensity = 1 + (bassData.reduce((a, b) => a + b) / bassData.length) / 255;
             }
             
-            lights.rim1.intensity = (2 + Math.sin(time * 0.7) * 0.5) * bassIntensity;
-            lights.rim2.intensity = (1.5 + Math.cos(time * 0.5) * 0.3) * bassIntensity;
-            lights.accent.color.setHSL((time * 0.1) % 1, 0.8, 0.5 * bassIntensity);
+            // Faster light animations
+            lights.rim1.intensity = (2 + Math.sin(time * 1.0) * 0.7) * bassIntensity; // Faster oscillation
+            lights.rim2.intensity = (1.5 + Math.cos(time * 0.8) * 0.5) * bassIntensity;
+            lights.accent.color.setHSL((time * 0.15) % 1, 0.8, 0.5 * bassIntensity); // Faster color change
         }
 
-        // Animate floating 3D texts
+        // Enhanced particles animation with faster movement
+        particles.children.forEach((miniHeart, index) => {
+            const { originalPosition, speed, amplitude, phase, colorSpeed } = miniHeart.userData;
+
+            // Position animation with increased speed
+            miniHeart.position.x = originalPosition.x + Math.sin(time * speed * 1.2 + phase) * amplitude;
+            miniHeart.position.y = originalPosition.y + Math.cos(time * speed * 1.0 + phase) * amplitude * 0.6;
+            miniHeart.position.z = originalPosition.z + Math.sin(time * speed * 1.5 + phase) * amplitude * 0.4;
+
+            // Faster rotation animation
+            miniHeart.rotation.x += 0.012; // Increased from 0.008
+            miniHeart.rotation.y += 0.009; // Increased from 0.006
+            miniHeart.rotation.z += 0.006; // Increased from 0.004
+
+            // Faster color animation
+            const hue = (time * colorSpeed * 0.15 + index * 0.1) % 1; // Faster color change
+            const newColor = new THREE.Color().setHSL(hue * 0.1 + 0.85, 0.8, 0.7);
+            miniHeart.material.color.lerp(newColor, 0.03); // Smoother transition
+            miniHeart.material.emissive.copy(newColor).multiplyScalar(0.25);
+        });
+
+        // Animate floating 3D texts with improved speed
         floatingTexts.forEach((textMesh, index) => {
             const { originalPosition, speed, amplitude, phase, rotationSpeed } = textMesh.userData;
 
-            // Position animation
-            textMesh.position.x = originalPosition.x + Math.sin(time * speed + phase) * amplitude;
-            textMesh.position.y = originalPosition.y + Math.cos(time * speed * 0.8 + phase) * amplitude * 0.6;
-            textMesh.position.z = originalPosition.z + Math.sin(time * speed * 1.2 + phase) * amplitude * 0.4;
+            // Faster position animation
+            textMesh.position.x = originalPosition.x + Math.sin(time * speed * 1.3 + phase) * amplitude;
+            textMesh.position.y = originalPosition.y + Math.cos(time * speed * 1.1 + phase) * amplitude * 0.6;
+            textMesh.position.z = originalPosition.z + Math.sin(time * speed * 1.6 + phase) * amplitude * 0.4;
 
-            // Rotation animation
-            textMesh.rotation.x += rotationSpeed.x;
-            textMesh.rotation.y += rotationSpeed.y;
-            textMesh.rotation.z += rotationSpeed.z;
+            // Faster rotation animation
+            textMesh.rotation.x += rotationSpeed.x * 1.2;
+            textMesh.rotation.y += rotationSpeed.y * 1.2;
+            textMesh.rotation.z += rotationSpeed.z * 1.2;
 
-            // Color animation with music reactivity
+            // Enhanced color animation with music reactivity
             if (isPlaying && analyser && dataArray) {
                 const bassData = dataArray.slice(0, dataArray.length / 4);
                 const bassIntensity = (bassData.reduce((a, b) => a + b) / bassData.length) / 255;
                 
-                const hue = (time * 0.1 + index * 0.1) % 1;
+                const hue = (time * 0.12 + index * 0.1) % 1; // Faster color cycling
                 const newColor = new THREE.Color().setHSL(hue * 0.1 + 0.85, 0.8, 0.7 + bassIntensity * 0.3);
-                textMesh.material.color.lerp(newColor, 0.02);
-                textMesh.material.emissive.copy(newColor).multiplyScalar(0.2 + bassIntensity * 0.3);
+                textMesh.material.color.lerp(newColor, 0.03);
+                textMesh.material.emissive.copy(newColor).multiplyScalar(0.2 + bassIntensity * 0.4);
             }
         });
 
-        // Enhanced particles animation
-        particles.children.forEach((miniHeart, index) => {
-            const { originalPosition, speed, amplitude, phase, colorSpeed } = miniHeart.userData;
-
-            // Position animation
-            miniHeart.position.x = originalPosition.x + Math.sin(time * speed + phase) * amplitude;
-            miniHeart.position.y = originalPosition.y + Math.cos(time * speed * 0.8 + phase) * amplitude * 0.6;
-            miniHeart.position.z = originalPosition.z + Math.sin(time * speed * 1.2 + phase) * amplitude * 0.4;
-
-            // Rotation animation
-            miniHeart.rotation.x += 0.008;
-            miniHeart.rotation.y += 0.006;
-            miniHeart.rotation.z += 0.004;
-
-            // Color animation
-            const hue = (time * colorSpeed * 0.1 + index * 0.1) % 1;
-            const newColor = new THREE.Color().setHSL(hue * 0.1 + 0.85, 0.8, 0.7);
-            miniHeart.material.color.lerp(newColor, 0.02);
-            miniHeart.material.emissive.copy(newColor).multiplyScalar(0.2);
-        });
-
-        // Animate floating elements
+        // Animate floating elements with increased speed
         if (scene.userData.floatingElements) {
             scene.userData.floatingElements.forEach((element, index) => {
                 const { originalPosition, speed, amplitude, phase } = element.userData;
-                element.position.x = originalPosition.x + Math.sin(time * speed + phase) * amplitude;
-                element.position.y = originalPosition.y + Math.cos(time * speed * 0.6 + phase) * amplitude * 0.8;
-                element.rotation.z += 0.005;
+                element.position.x = originalPosition.x + Math.sin(time * speed * 1.4 + phase) * amplitude;
+                element.position.y = originalPosition.y + Math.cos(time * speed * 1.0 + phase) * amplitude * 0.8;
+                element.rotation.z += 0.008; // Faster rotation
                 
-                // Fade in/out effect
-                element.material.opacity = 0.3 + Math.sin(time * speed * 2 + phase) * 0.2;
+                // Enhanced fade in/out effect
+                element.material.opacity = 0.3 + Math.sin(time * speed * 3 + phase) * 0.25;
             });
         }
 
-        // Mouse interaction
+        // Enhanced mouse interaction with more responsiveness
         if (!cameraIntroActive) {
-            heart.rotation.x = Math.PI + mouseY * 0.1;
-            heart.rotation.z = mouseX * 0.1;
+            heart.rotation.x = Math.PI + mouseY * 0.15; // Increased sensitivity
+            heart.rotation.z = mouseX * 0.15;
         }
 
         renderer.render(scene, camera);

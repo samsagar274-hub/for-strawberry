@@ -1,0 +1,37 @@
+1. install vs code if you dont have in your system.
+refer to these for installation :
+https://youtu.be/3eCmc0t6aqA?si=TkV0bVEz_95FbMmi
+
+2. Now open the "heart-animation-letter" folder, in vs code.
+
+3. Install "Live Server Extension" in your vs code. and then go to index.html file, right click, select "open with live server"
+
+Watch this tutorial:
+
+https://www.youtube.com/watch?v=9kEOkw_LvGU
+
+4. if you want to share with someone then you will have to host it.
+
+5. for hosting you will need github and vercel. 
+
+6. refer to my tutorial :
+https://youtu.be/bFCnDsQwNvA
+
+
+HOW TO CUSTOMISE :
+
+- Edit your text in index.html file
+
+- Edit "I Love You" text in heart.js file, line 164
+
+- Edit Song Lyrics in heart.js file, line 31 to 35
+(Edit Timing of lyrics manually, units given as miliseconds)
+For 1 second : 1000
+For 2 second : 2000
+
+and so on....
+
+HOW TO REPLACE MUSIC :
+- copy paste your music in the "heart-animation-letter" folder
+- delete previous music
+- rename your music file as "music.mp3"

@@ -617,43 +617,100 @@ button {
     }
     
     #lyrics-container {
-        bottom: 10% !important; /* Position it lower on mobile */
+        bottom: 15% !important; /* Better positioning */
         left: 50%;
         transform: translateX(-50%);
-        width: 95%;
-        max-width: 95%;
+        width: 92%;
+        max-width: 92%;
         margin: 0;
         padding: 0;
-        background: rgba(0, 0, 0, 0.3) !important; /* More transparent */
-        backdrop-filter: blur(2px);
     }
     
     #lyrics {
-        padding: 15px 20px;
-        border-radius: 15px;
+        padding: 12px 16px; /* Smaller padding */
+        border-radius: 12px;
         margin: 0 auto;
         width: 100%;
         box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.4) !important; /* More transparent */
+        backdrop-filter: blur(3px);
+        min-height: 60px; /* Smaller minimum height */
     }
     
     .word {
-        font-size: 1.4rem;
+        font-size: 1.2rem !important; /* Smaller text */
+        gap: 6px;
     }
     
     .lyric-line {
-        gap: 8px;
-        width: calc(100% - 30px); /* Account for smaller padding */
-        font-size: 0.9rem !important; /* Smaller text on mobile */
-        padding: 8px !important;
+        gap: 6px;
+        width: calc(100% - 25px);
+        font-size: 1.2rem !important; /* Consistent smaller size */
+        padding: 6px !important;
+        line-height: 1.3;
     }
     
+    /* Better letter modal for mobile */
     .letter-modal {
-        padding: 10px;
+        padding: 8px;
     }
     
     .letter-paper {
-        padding: 25px;
+        padding: 30px 25px; /* Better mobile padding */
         margin: 0;
+        max-height: 85vh; /* More space for content */
+    }
+    
+    .letter-header h2 {
+        font-size: 2.0rem; /* Bigger header */
+    }
+    
+    .letter-body {
+        font-size: 1.3rem; /* Bigger body text */
+        line-height: 1.7; /* Better line spacing */
+    }
+    
+    .greeting {
+        font-size: 1.4rem; /* Bigger greeting */
+    }
+    
+    .closing {
+        font-size: 1.2rem; /* Bigger closing */
+    }
+    
+    .signature {
+        font-size: 1.4rem; /* Bigger signature */
+    }
+}
+
+@media (max-width: 480px) {
+    #lyrics-container {
+        bottom: 12% !important;
+        width: 95%;
+        max-width: 95%;
+    }
+    
+    #lyrics {
+        padding: 10px 12px;
+        border-radius: 10px;
+        min-height: 50px;
+    }
+    
+    .word {
+        font-size: 1.0rem !important; /* Even smaller for very small screens */
+    }
+    
+    .lyric-line {
+        gap: 4px;
+        width: calc(100% - 20px);
+        font-size: 1.0rem !important;
+        padding: 4px !important;
+    }
+    
+    /* Enhanced letter for small mobile */
+    .letter-paper {
+        padding: 25px 20px;
+        max-height: 80vh;
     }
     
     .letter-header h2 {
@@ -661,7 +718,63 @@ button {
     }
     
     .letter-body {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+    
+    .greeting {
+        font-size: 1.3rem;
+    }
+    
+    .close-letter {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+    }
+}
+
+/* Extra small screens optimization */
+@media (max-width: 360px) {
+    #lyrics-container {
+        bottom: 10% !important;
+        width: 98%;
+        max-width: 98%;
+    }
+    
+    #lyrics {
+        padding: 8px 10px;
+        border-radius: 8px;
+        min-height: 45px;
+    }
+    
+    .word {
+        font-size: 0.9rem !important;
+    }
+    
+    .lyric-line {
+        gap: 3px;
+        width: calc(100% - 16px);
+        font-size: 0.9rem !important;
+        padding: 3px !important;
+    }
+    
+    /* Letter optimization for very small screens */
+    .letter-paper {
+        padding: 20px 15px;
+        max-height: 75vh;
+    }
+    
+    .letter-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .letter-body {
         font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    
+    .letter-body p {
+        margin-bottom: 15px; /* Tighter spacing */
     }
     
     .greeting {
@@ -669,60 +782,10 @@ button {
     }
     
     .closing {
-        font-size: 1.1rem;
+        font-size: 1.0rem;
     }
     
     .signature {
         font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .letter-paper {
-        padding: 20px;
-    }
-    
-    .letter-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .letter-body {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-    
-    .greeting {
-        font-size: 1.1rem;
-    }
-    
-    .close-letter {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
-    }
-}
-
-/* Extra small screens */
-@media (max-width: 320px) {
-    #lyrics-container {
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 96%;
-        max-width: 96%;
-    }
-    
-    #lyrics {
-        padding: 10px 12px;
-        border-radius: 10px;
-    }
-    
-    .word {
-        font-size: 1rem;
-    }
-    
-    .lyric-line {
-        gap: 4px;
-        width: calc(100% - 20px); /* Account for smallest padding */
     }
 }
