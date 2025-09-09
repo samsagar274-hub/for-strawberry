@@ -108,9 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add button event listeners
         document.getElementById('pulsateToggle').addEventListener('click', togglePulsation);
-        document.getElementById('colorChange').addEventListener('click', changeHeartColor);
+        // document.getElementById('colorChange').addEventListener('click', changeHeartColor);
         document.getElementById('playMusic').addEventListener('click', toggleMusic);
         document.getElementById('resetCamera').addEventListener('click', resetCamera);
+        document.getElementById('viewLetter').addEventListener('click', showLetter);
+        document.getElementById('closeLetter').addEventListener('click', hideLetter);
+
+        // Close letter when clicking outside
+        document.getElementById('letterModal').addEventListener('click', (e) => {
+            if (e.target.id === 'letterModal') {
+                hideLetter();
+            }
+        });
+
+        // Close letter with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideLetter();
+            }
+        });
 
         // Show controls with reduced delay but NOT lyrics
         setTimeout(() => {
@@ -965,3 +981,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the 3D scene
     init();
 });
+
+function showLetter() {
+    const letterModal = document.getElementById('letterModal');
+    letterModal.classList.add('show');
+    
+    // Pause music if playing for a more intimate moment
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        const button = document.getElementById('playMusic');
+        button.innerHTML = '<span class="btn-icon">🎵</span><span class="btn-text">Play Music</span>';
+        button.classList.remove('playing');
+        document.getElementById('lyrics-container').classList.remove('show');
+        document.getElementById('lyrics').innerHTML = '';
+        shownLyrics.clear();
+    }
+    
+    // Add a gentle entrance animation
+    setTimeout(() => {
+        letterModal.querySelector('.letter-content').style.transform = 'scale(1) translateY(0)';
+    }, 100);
+}
+
+function hideLetter() {
+    const letterModal = document.getElementById('letterModal');
+    const letterContent = letterModal.querySelector('.letter-content');
+    
+    // Add exit animation
+    letterContent.style.transform = 'scale(0.7) translateY(50px)';
+    
+    setTimeout(() => {
+        letterModal.classList.remove('show');
+        letterContent.style.transform = 'scale(0.7) translateY(50px)';
+    }, 200);
+}
