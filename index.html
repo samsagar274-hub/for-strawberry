@@ -3,18 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Interactive Heart</title>
+    <title>For My Strawberry 💖</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Intro Overlay -->
+
+
     <div id="container"></div>
-    <!-- <div id="info">
-        <p>Move your mouse to interact with the heart</p>
-        <p>Scroll to zoom, drag to rotate view</p>
-    </div> -->
+    
+    <!-- Modern Control Panel -->
     <div id="controls">
-        <button id="colorToggle">Change Color</button>
-        <button id="pulsateToggle">Toggle Pulse</button>
+        <div class="control-group">
+            <button id="playMusic" class="control-btn primary">
+                <span class="btn-icon">🎵</span>
+                <span class="btn-text">Play Music</span>
+            </button>
+            <button id="pulsateToggle" class="control-btn">
+                <span class="btn-icon">💓</span>
+                <span class="btn-text">Stop Pulse</span>
+            </button>
+        </div>
+        <div class="control-group">
+            <button id="colorChange" class="control-btn">
+                <span class="btn-icon">🎨</span>
+                <span class="btn-text">Change Color</span>
+            </button>
+            <button id="resetCamera" class="control-btn">
+                <span class="btn-icon">📷</span>
+                <span class="btn-text">Reset View</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Lyrics Display -->
+    <div id="lyrics-container">
+        <div id="lyrics" class="lyrics-text"></div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -22,5 +49,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.min.js"></script>
     <script src="heart.js"></script>
+
 </body>
 </html>
